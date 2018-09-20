@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<input type="hidden" th:value="${roleId}" id="roleId"/>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+		<div class="nav-right fr" >
+			<!--分类-->
+			<div class="mr30 clearfix" style="position:relative;min-height: 232px;">
+		    	<P class="mr20 fl" style="position:absolute;left:0;top:0;"><label>角色名称：</label><input type="text"  th:value="${roleName}" readonly/></P>
+		    	<P class="mr20 fl" style="position:absolute;left:0;top:60px;"><label>系统名称：</label><input type="text" th:value="${sysName}" readonly/></P>
+            	<div><div id="tree" style="position:absolute;left:360px;top:60px;"></div></div>              
+        	</div>
+        	<p class="return" style="margin-left: 0;"><button class="mr20" id="formSubmit">提交</button></p>
+        </div>
+	</div>
+
+</div>
+
+</body>
+  <link th:href="@{/css/jquery-ui.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/fancytree.css}" rel="stylesheet" type="text/css" />
+  <script type="text/javascript"  th:src="@{/js/common.js}"></script>
+  <script type="text/javascript"  th:src="@{/jquery/jquery.fancytree.js}"></script>
+  <script type="text/javascript"  th:src="@{/js/role/roleAllocation.js}"></script>
+  <script type="text/javascript" th:inline="javascript"  >
+  $(function(){
+	    //取得树的数据  
+		var permission=[[${permission}]];
+	      $("#tree").fancytree({
+		   checkbox: true,
+	       selectMode: 3,
+//	        autoCollapse: true,
+	       debugLevel:0,
+	       selectable : false,
+	       clickFolderMode : 2,
+	       expanded : true,
+	　　             source:  eval(permission)
+	      });
+	   
+	      //展开所有节点
+	       $("#tree").fancytree("getRootNode").visit(function(node) {
+	       node.setExpanded(true);
+	       }); 
+	   
+//	    $("#tree").fancytree("getRootNode").getFirstChild().setExpanded(true); //只展开第一个节点
+		
+		
+	    });
+  </script>
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:risk="">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" href="../../static/css/common.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+</head>
+<body>
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+		<div class="nav-right fr">
+			<!--面包屑导航-->
+			<div th:each="p : ${list}" class="bread-nav">
+				<span>&gt;</span>
+				<a th:href="@{/permission/list(systemId=${systemId},parentId=${p.id})} " th:text="${p.name}"></a>
+
+			</div>
+			<!--分类-->
+			<div class="mr30 clearfix">
+				<p class="selectSearch fl">选择系统：
+							<select class="mr20" id="systemSelectId">
+							  <option th:each="sys : ${cacSystemList}"  th:value="${sys.id}" th:text="${sys.name}" 
+							  th:selected="${sys.id==systemId}"></option>
+							</select>
+				</p>
+				<div class="mr20 fl">
+					<p class="edit fl mr20" id="queryData"><img class="mr5" src="../images/edit.png">查询</p>
+					<b risk:check="/permission/goAdd"><p class="addnew fl"><a th:href="@{/permission/goAdd(systemId=${systemId},parentId=${parentId})}">
+						<img class="mr5" src="../images/edit.png">新增</a></p></b>
+				</div>
+			</div>
+			<div>
+				<table border="1">
+					<tr>
+<!-- 						<td>编号</td> -->
+						<td>系统显示名称</td>
+						<td>功能url</td>
+						<td>类别</td>
+						<td>创建时间</td>
+						<td>修改时间</td>
+						<td>功能描述</td>
+						<td class="w26">操作</td>
+					</tr>
+					<tr th:each="resource : ${page.list}">
+<!-- 						<td   th:text="${resource.id}"></td> -->
+						<td th:text="${resource.name}"></td>
+						<td th:text="${resource.url}"></td>
+						<td th:text="${resource.type }=='00'?'菜单':'功能'">菜单</td>
+						<td th:text="${#dates.format(resource.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+						<td th:text="${#dates.format(resource.updateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+						<td th:text="${resource.description}"></td>
+						<td>
+							<div class="buttons">
+								<b risk:check="/permission/goUpdate"><p class="edit fl mr20"><a  th:href="@{/permission/goUpdate(resourceId=${resource.id})}"><img class="mr5" src="../images/edit.png"/>修改</a></p></b>
+							    <b risk:check="/permission/addOrUpdate"><p class="delete fl mr20"><a  th:id="${resource.id}" onclick="deleteResource(this)"><img class="mr5" src="../images/delete.png"/>删除</a></p></b>
+							    
+							    <p class="edit fl mr20" th:if="${resource.type}=='00'"><a  th:id="${resource.id}" onclick="selectSonResource(this)">
+							    <img class="mr5" src="../images/edit.png"/> 子权限</a></p>
+							</div>
+
+						</td>
+					</tr>
+				</table>
+				<div th:include="page :: page" url="/permission/list"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+<script type="text/javascript"  th:src="@{/js/permission/list.js}"></script>
+</html>
+

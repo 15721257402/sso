@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/role/add.js}"></script>
+</head>
+<body>
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+      <div class="nav-right fr">
+      <div class="userCheck mr30 clearfix">
+                    <form action="#" id="roleAddForm">
+					<P class="mr20 fl"><label>角色名称：</label><input type="text" name="roleName" id="roleName"/></P>
+                    <p class="selectSearch fl">
+                    		<label>选择系统：</label>
+							<select class="mr20" name="systemId" id="systemId">
+							  <option value="">请选择</option>
+							  <option th:each="sys : ${cacSystemList}"  th:value="${sys.id}" th:text="${sys.name}"></option>
+							</select>
+					</p>
+					<P class="describe mr20 fl"><label>描述：</label><textarea rows="3" cols="20" name="description" id="description"></textarea></P>
+					
+					<p class="return fl"><button type="button" class="mr20" id="formSubmit">确认</button></p>
+					</form>
+					</div>
+				</div>
+	</div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,169 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
+}
+
+/** =======================
+ * Contenedor Principal
+ ===========================*/
+h1 {
+ 	color: #FFF;
+ 	font-size: 24px;
+ 	font-weight: 400;
+ 	text-align: center;
+ 	margin-top: 80px;
+}
+
+h1 a {
+ 	color: #c12c42;
+ 	font-size: 16px;
+}
+
+.accordion {
+ 	width: 100%;
+ 	max-width: 360px;
+ 	margin: 0;
+}
+
+.accordion .link {
+	cursor: pointer;
+	display: block;
+	padding-left: 14px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 700;
+	position: relative;
+	background: url('../img/sidebar_bg_line.png');
+	height: 50px;
+	line-height: 50px;
+}
+
+.accordion li:last-child .link {
+	border-bottom: 0;
+}
+
+.accordion li:nth-child(odd) .link {
+	background-position: 0 -51px;
+}
+
+.accordion li:nth-child(even) .link {
+	background-position: 0 -102px;
+}
+
+.accordion li.active .link {
+	background-position: 0 0;
+}
+
+.accordion .link .business {
+	background-position: -217px -78px;
+}
+
+.accordion .link .personnel {
+	background-position: -247px -78px;
+}
+
+.accordion .link .finance {
+	background-position: -279px -78px;
+}
+
+.accordion .link .resource {
+	background-position: -308px -79px;
+}
+
+.accordion .link .setting {
+	background-position: -334px -79px;
+}
+
+.accordion .link .storePics {
+	position: relative;
+	top: 5px;
+	margin-right: 50px;
+}
+
+/**
+ * Submenu
+ -----------------------------*/
+.submenu {
+ 	display: none;
+ 	font-size: 14px;
+ 	list-style: none;
+ 	margin: 10px 0;
+}
+
+.submenu a {
+ 	display: block;
+ 	text-decoration: none;
+ 	color: #fff;
+ 	padding-left: 80px;
+ 	width: 100%;
+	height: 38px;
+	line-height: 38px;
+}
+
+.submenu a:hover {
+ 	color: #FFF;
+}
+
+.submenu a .sub {
+	background: url('../img/storePics.png');
+	width: 20px;
+	height: 38px;
+	position: absolute;
+	background-position: -371px -27px;
+}
+
+.submenu li:last-child a .sub {
+	background-position: -371px -63px;
+}
+
+.submenu a .text {
+	width: 80px;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 13px;
+	position: relative;
+	top: 4px;
+	left: 20px;
+	white-space: nowrap;
+}
+
+.submenu a.active .text {
+	background: url('../img/storePics.png');
+	background-position: -312px -111px;
+}
+
+.side-menu-arrow-left {
+	position: fixed;
+	left: 197px;
+	top: 50%;
+	cursor: pointer;
+	background-image: url('../img/menu-left.png');
+	width: 38px;
+	height: 66px;
+}
+
+.sidebar .arrow-right {
+	left: -19px;
+	background-image: url('../img/menu-right.png');
+}
+
+.sidebar .arrow-right:hover {
+	left: 0;
+}
+
+.content-main-full {
+	margin-left: 0!important;
+	width: 100%!important;
+}
+
+.side-menu-hide {
+	left: -220px;
+}

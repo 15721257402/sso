@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>超爱财权限服务</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:fragment="top">
+		<div class="nav">
+			<div class="leftLogo">
+				<a th:href="@{'http://admin.'+${session.ssoDomain}}"><div class="fl logo">超爱财</div></a>
+				<div class="line-color fl"></div>
+				<div class="fl textsa"><a href="/">权限管理控制台</a></div>
+			</div>
+			<div class="loginBoxs fr">
+				<div class="loginIng fr">
+					<span class="fl" th:text="${session.ssoUser}?(${session.ssoUser.userName})"></span>
+					<div class="line-color fl"></div>
+					<a href="/sso/logout" class="fl">退出</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:fragment="left">
+		<div class="nav-left fl">
+			<ul id="candan">
+				<b risk:check="/ssouser/gotoList"><li class="one" >
+					<a href="/ssouser/gotoList" class="firstItem">用户<i></i></a>
+				</li></b>
+				<b risk:check="/role/list"><li class="two" >
+					<a href="/role/list" class="firstItem">角色<i></i></a>
+				</li></b>
+				<b risk:check="/permission/list"><li class="three" >
+					<a href="/permission/list" class="firstItem">权限<i></i></a>
+				</li></b>
+				<b risk:check="/ssoSystem/gotoList"><li class="four" >
+					<a href="/ssoSystem/gotoList" class="firstItem">系统<i></i></a>
+				</li></b>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

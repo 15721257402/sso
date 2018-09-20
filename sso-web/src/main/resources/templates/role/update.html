@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+</head>
+<body>
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+      <div class="nav-right fr">
+      <div class="userCheck mr30 clearfix">
+                   <form action="*" id="roleUpdateForm">
+                    <input type="hidden" id="id" name="id" th:value="${role.id}"/>
+					<P class="mr20 fl"><label>角色名称：</label><input type="text" name="roleName" id="roleName" th:value="${role.roleName}"/></P>
+<!-- 					<P class="mr20 fl"><label>系统：</label><input type="text" name="systemId" id="systemId" th:text=""/></P> -->
+					<P class="describe mr20 fl"><label>描述：</label><textarea rows="3" cols="20" name="description" id="description" th:text="${role.description}"></textarea></P>
+					<p class="return fl"><button type="button" class="mr20" id="formSubmit">确认</button></p>
+					</form>
+					</div>
+				</div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript"  th:src="@{/js/role/update.js}"></script>
+</html>
+

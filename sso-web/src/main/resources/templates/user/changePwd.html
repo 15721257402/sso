@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:risk="">
+<head>
+	<title>超爱财权限服务</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/userRole.js}"></script>
+</head>
+<body>
+
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+
+		<div class="nav-right fr">
+			<div class="userCheck mr30 clearfix">
+				<form action="#" method="post" id="changePwdForm">
+					<input type="hidden" id="userId" name="id" th:value="${cacUser.id}"/>
+					<input type="hidden" id="salt" name="salt" th:value="${cacUser.salt}"/>
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>用户名:</label>
+						<input type="text" name="userName" readonly th:value="${cacUser.userName}"/>
+					</p>
+
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>原密码:</label>
+						<input type="password" id="password" name="password" />
+					</p>
+
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>新密码:</label>
+						<input type="password" id="newPassword" name="newPassword"  />
+					</p>
+
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>确认密码:</label>
+						<input type="password" id="confirmPassword" name="confirmPassword"  />
+					</p>
+					<div class="form-group fl">
+						<b risk:check="/ssouser/changePwd">
+							<button type="button" class="btn btn-primary" id="changePwdSub" onclick="changePwdSubmit()">提交</button>
+						</b>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+

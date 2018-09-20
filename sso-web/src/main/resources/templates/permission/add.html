@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/permission/add.js}"></script>
+</head>
+<body>
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+      <div class="nav-right fr">
+      <div class="userCheck mr30 clearfix">
+                 <form action="#" id="permissionAddForm">
+					<P class="mr20 fl"><label>功能名称：</label><input type="text" name="name" id="name"/></P>
+					<P class="mr20 fl"><label>功能url：</label><input type="text" name="url" id="url"/></P>
+					<P class="mr20 fl"><label>类型：</label>菜单：<input type="radio" name="type" id="type" value="00" /> 功能：<input type="radio" name="type" id="type" value="01" checked="checked"/></P>
+                    <P class="mr20 fl"><label>系统：</label>
+						<input type="text" th:value="${cacSystem.name}" readonly="true" disabled="disabled">
+						<input type="hidden" name="systemId" id="systemId" th:value="${cacSystem.id}"/></P>
+                    <P class="mr20 fl"><label>上级菜单：</label>
+						<input type="text" th:value="${cacResource.name}" readonly="true" disabled="disabled"/>
+						<input type="hidden" name="parentId" id="parentId" th:value="${cacResource.id}"/>
+					</P>
+					<P class="describe mr20 fl"><label>描述：</label><textarea rows="3" cols="20" name="description" id="description"></textarea></P>
+					
+					<p class="return fl"><button type="button" class="mr20" id="formSubmit">确认</button></p>
+					</form>
+					</div>
+				</div>
+	</div>
+</div>
+
+</body>
+</html>
+

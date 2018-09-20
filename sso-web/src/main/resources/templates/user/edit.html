@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:risk="">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/userRole.js}"></script>
+</head>
+<body>
+
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+
+		<div class="nav-right fr">
+			<div class="userCheck mr30 clearfix">
+				<form action="/ssouser/addCacUser" method="post" id="userRoleForm">
+					<input type="hidden" id="userId" name="id" th:value="${cacUser.id}"/>
+					<input type="hidden" id="salt" name="salt" th:value="${cacUser.salt}"/>
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>用户名:</label><input type="text" name="userName" readonly th:value="${cacUser.userName}"/></p>
+					<!--<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>密码:</label><input type="password" id="password" name="password" th:value="${cacUser.password}"/></p>-->
+					<!--<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>确认密码:</label><input type="password" name="confirmPassword" th:value="${cacUser.password}" /></p>-->
+					<p  class="inputBtn mr20 fl"><em style="color: red">*</em>&nbsp;<label>入职时间:</label>
+						<input type="text" class="timeTool" name="entryTime" id="entryTime" th:value="${#dates.format(cacUser.entryTime, 'yyyy/MM/dd')}" >
+						<span class="special1"></span></p>
+					<p  class="inputBtn mr20 fl"><em style="color: red">*</em>&nbsp;<label>出生日期:</label>
+						<input type="text" class="timeTool" name="birthday" id="birthday" th:value="${#dates.format(cacUser.birthday, 'yyyy/MM/dd')}" >
+						<span class="special1"></span></p>
+					<p class="mr20 fl">
+						<em style="color: red">&nbsp;</em>&nbsp;<label>性别:</label>
+						<input type="radio" class="mr5" name="sex" th:checked="${cacUser.sex=='01'}" value="01"/>男&ensp;
+						<input type="radio" class="mr5" name="sex" th:checked="${cacUser.sex=='02'}" value="02"/>女
+					</p>
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp;<label>email:</label><input type="text" name="email" th:value="${cacUser.email}" /></p>
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp;<label>手机:</label><input type="text" name="mobile" th:value="${cacUser.mobile}" maxlength="11" /></p>
+					<p class="mr20 fl re-row describe"><em style="color: red">&nbsp;</em>&nbsp;<label>描述:</label><textarea name="description" th:text="${cacUser.description}" ></textarea></p>
+
+					<div class="form-group fl">
+						<b risk:check="/ssouser/editCacUser">
+							<button type="button" class="btn btn-primary" id="userRoleInfoSubmit" onclick="userRoleSubmit(false)">提交</button>
+						</b>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+

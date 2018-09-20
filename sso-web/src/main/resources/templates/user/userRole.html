@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:risk="">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/userRole.js}"></script>
+</head>
+<body>
+
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+
+		<div class="nav-right fr">
+			<div class="userCheck mr30 clearfix">
+				<form action="/ssouser/addCacUser" method="post" id="userRoleForm">
+
+					<input type="hidden" id="userId" name="id" th:value="${userId}"/>
+
+					<p class="selectSearch fl">选择系统：
+						<b risk:check="/ssouser/ajaxUserRole">
+							<select name="systemId" id="sysCode" class="mr20" onchange="changeSys(false)" onclick="clickSys()">
+								<option th:each="system : ${allCacSystem}" th:text="${system.name}" th:value="${system.id}"></option>
+							</select>
+						</b>
+					</p>
+
+					<div class="form-group text-center fl">
+						<div class="row">
+							<label for="left_select" style="">待分配角色</label>
+							<label for="right_select" style="margin-left: 350px;">已分配角色</label>
+						</div>
+						<select id="left_select" style="width: 200px; height: 300px; margin-bottom: 50px;" multiple>
+						</select>
+						<div style="display: inline-block;width: 50px;height: 300px;position: absolute;padding-top: 50px;margin-left: 50px;">
+							<button id="add" type="button" class="btn btn-primary btn-sm" style=" ">&gt;</button>
+							<button id="addAll" type="button" class="btn btn-primary btn-sm" style="margin-top: 10px; ">&gt;&gt;</button>
+							<button id="remove" type="button" class="btn btn-primary btn-sm" style="margin-top: 60px; ">&lt;</button>
+							<button id="removeAll" type="button" class="btn btn-primary btn-sm" style="margin-top: 10px; ">&lt;&lt;</button>
+						</div>
+						<select id="right_select" name="roleIds" style="width: 200px; height: 300px; margin-bottom: 50px; margin-left: 220px;" multiple>
+						</select>
+					</div>
+					<div class="form-group fl">
+						<b risk:check="/ssouser/changeUserRole">
+							<button type="button" class="btn btn-primary" id="userRoleInfoSubmit" onclick="userRoleSub()">保存</button>
+						</b>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+	</div>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:risk="">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/system.js}"></script>
+</head>
+</head>
+<body>
+
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+
+		<div class="nav-right fr">
+			<!--分类-->
+			<div class="mr30 clearfix">
+				<p class="mr20 fl">名称：<input type="text" id="systemName"/></p>
+				<!--<p class="mr20 fl">状态：<input type="text" /></p>-->
+				<div class="mr20 fl">
+					<p class="edit fl mr20" onclick="search()"><img class="mr5" src=".././images/search.png">查询</p>
+					<b risk:check="/ssoSystem/gotoAdd">
+						<a href="/ssoSystem/gotoAdd">
+							<p class="addnew fl">
+								<img class="mr5" src=".././images/addnew.png">新增
+							</p>
+						</a>
+					</b>
+				</div>
+			</div>
+			<table border="1">
+				<tr>
+					<td hidden="hidden">id</td>
+					<td>短名称</td>
+					<td>名称</td>
+					<td>地址</td>
+					<td>是否有效</td>
+					<td class="w26">操作</td>
+				</tr>
+				<tr th:each="sys:${page.list}">
+					<td hidden="hidden" th:text="${sys.id}"></td>
+					<td th:text="${sys.shortName}"></td>
+					<td th:text="${sys.name}"></td>
+					<td th:text="${sys.url}"></td>
+					<td th:text="${sys.status=='00'?'有效':'不可用'}"></td>
+					<td>
+						<div class="buttons">
+							<!--<p class="edit fl mr20"><img class="mr5" src=".././images/check.png">查看</p>-->
+							<b risk:check="/ssoSystem/gotoDetail">
+								<a th:href="@{'/ssoSystem/gotoDetail?id='+${sys.id}}">
+									<p class="edit fl mr20"><img class="mr5" src=".././images/edit.png">编辑</p>
+								</a>
+							</b>
+							<b  risk:check="/ssoSystem/delSystem">
+								<p class="delete fl" th:onclick="'javascript:sysdel(\''+${sys.id}+'\');'">
+									<img class="mr5" src=".././images/delete.png">删除</p>
+							</b>
+
+						</div>
+					</td>
+				</tr>
+				<div th:include="page :: page" url="/ssoSystem/gotoList"></div>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
+

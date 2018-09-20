@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="page">
+    <div id="page"></div>
+<link rel="stylesheet" th:href="@{/css/pages/style.css}"/>
+<link rel="stylesheet" th:href="@{/css/pages/pagestyle.css}"/>
+<script type="text/javascript" th:src="@{/js/pages/page.js}"></script>
+<script th:inline="javascript">/*<![CDATA[*/
+     //得到总页码                                    
+    var size=[[${page.pages}]];
+    if(size>1)
+    	//初始化分页html
+     Pagination.Init(document.getElementById('page'), {
+            size: size, // pages size
+            page: [[${page.pageNum}]],  // selected page
+            step: 3   // pages before and after current
+        });
+    
+ //点击页码   
+function back(page_index){
+    if([[${page.pageNum}]]==page_index) 
+        return;
+    var url=document.getElementById('page').parentNode.getAttribute('url');
+    var tourl;
+    //取得当前请求的参数
+    var parm=window.location.search;
+    re = new RegExp("[&]?pageNum=\\d+", "g"); 
+    parm=parm.replace(re, "");
+    url=url+parm;
+    if(url.indexOf('?')>0){
+        tourl=url+'&pageNum='+page_index;
+    }
+    else{
+        tourl=url+'?pageNum='+page_index;
+    }
+        window.location.href=tourl;
+    /*]]>*/
+}
+     
+function GetQueryString(name) { 
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r!=null) return (r[2]); return null; 
+	}
+</script>
+</div>
+</html>

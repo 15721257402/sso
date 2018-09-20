@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:risk="">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/userRole.js}"></script>
+
+</head>
+<body>
+
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+
+		<div class="nav-right fr">
+			<div class="userCheck mr30 clearfix">
+				<form action="#" method="post" id="userRoleForm">
+					<input type="hidden" name="status" value="01" />
+					<input type="hidden" name="isOn" value="01" />
+					<p class="mr20 fl"><label><em style="color: red">*</em>&nbsp; 用户名：</label><input type="text" name="userName" id="userName"/><!--<div style="color: red" id="userNameErrormsg"></div>--></p>
+					<p class="mr20 fl"><label><em style="color: red">*</em>&nbsp; 密码：</label><input type="password" name="password" id="password"/></p>
+					<p class="mr20 fl"><label><em style="color: red">*</em>&nbsp; 确认密码：</label><input type="password" name="confirmPassword"/></p>
+					<p  class="inputBtn mr20 fl"><em style="color: red">*</em>&nbsp; 入职时间：
+						<input type="text" class="timeTool" name="entryTime" id="entryTime" >
+						<span class="special1"></span></p>
+					<p  class="inputBtn mr20 fl"><em style="color: red">*</em>&nbsp; 出生日期：
+						<input type="text" class="timeTool" name="birthday" id="birthday" >
+						<span class="special1"></span></p>
+					<p class="mr20 fl">
+						<em style="color: red">&nbsp;</em>&nbsp;<label>性别：</label>
+						<input type="radio" name="sex" value="01" class="mr5" checked/>男&ensp;
+						<input type="radio" name="sex" value="02" class="mr5"/>女
+					</p>
+					<p class="mr20 fl"><label><em style="color: red">*</em>&nbsp; email：</label><input type="text" name="email"/></p>
+					<p class="mr20 fl"><label><em style="color: red">*</em>&nbsp; 手机：</label><input type="text" name="mobile" maxlength="11"/></p>
+					<em style="color: red">&nbsp;</em>&nbsp;<p class="mr20 fl re-row describe"><label>描述：</label><textarea name="description"></textarea></p>
+
+					<div class="form-group fl">
+						<b risk:check="/ssouser/addCacUser">
+							<button type="button" class="btn btn-primary" id="userRoleInfoSubmit" onclick="userRoleSubmit(true)">提交</button>
+						</b>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+

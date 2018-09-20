@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>超爱财权限服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/permission/update.js}"></script>
+</head>
+<body>
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+      <div class="nav-right fr">
+      <div class="userCheck mr30 clearfix">
+               <form action="#" method="post" id="permissionUpdateForm">
+                    <input type="hidden" id="id" th:value="${cacResource.id}"/>
+					<P class="mr20 fl"><label>功能名称：</label><input type="text" name="name" id="name" th:value="${cacResource.name}"/></P>
+					<P class="mr20 fl"><label>功能url：</label><input type="text" name="url" id="url" th:value="${cacResource.url}"/></P>
+					<P class="mr20 fl"><label>类型：</label>菜单：<input type="radio" name="type" id="type" value="00" th:field="*{cacResource.type}"/> 
+					功能：<input type="radio" name="type" id="type" value="01" th:field="*{cacResource.type}"/></P>
+                    <p class="selectSearch fl"><label>选择系统：</label>
+							<select class="mr20" name="systemId" id="systemId" readonly="true">
+							  <option value="">请选择</option>
+							  <option th:each="sys : ${cacSystemList}"  th:value="${sys.id}" th:text="${sys.name}"
+							  th:selected="${sys.id==cacResource.systemId}"></option>
+							</select>
+					</p>
+					<p class="selectSearch fl"><label>上级菜单：</label>
+							<select class="mr20" id="parentId" name="parentId" readonly="true">
+							  <option value="">请选择系统</option>
+							   <option th:each="resouse : ${list}"  th:value="${resouse.id}" th:text="${resouse.name}"
+							  th:selected="${resouse.id==cacResource.parentId}"></option>
+							</select>
+					</p>
+					<P class="describe mr20 fl"><label>描述：</label><textarea rows="3" cols="20" name="description" id="description" th:text="${cacResource.description}"></textarea></P>
+					
+					<p class="return fl"><button type="button" class="mr20" id="formSubmit">确认</button></p>
+					</form>
+					</div>
+				</div>
+	</div>
+</div>
+
+</body>
+</html>
+

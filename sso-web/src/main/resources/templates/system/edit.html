@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:risk="">
+<head>
+	<title>超爱财权限服务</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript"  th:src="@{/js/common.js}"></script>
+	<script type="text/javascript"  th:src="@{/js/system.js}"></script>
+</head>
+</head>
+<body>
+
+<div>
+	<div th:replace="~{common :: top}"></div>
+	<div class="main clearfix">
+		<div th:replace="~{common :: left}"></div>
+
+		<div class="nav-right fr">
+			<div class="userCheck mr30 clearfix">
+				<form action="/ssouser/addCacUser" method="post" id="systemForm">
+					<input type="hidden" name="id" th:value="${cacSystem.id}" />
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>短名称：</label><input type="text" name="shortName" id="shortName"  th:value="${cacSystem.shortName}" /></p>
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>名称：</label><input type="text" name="name" th:value="${cacSystem.name}" /></p>
+					<p class="mr20 fl"><em style="color: red">*</em>&nbsp; <label>地址：</label><input type="text" name="url" th:value="${cacSystem.url}" /></p>
+					<p class="mr20 fl re-row describe"><label>描述：</label>
+						<textarea name="description" th:text="${cacSystem.description}"></textarea>
+					</p>
+
+					<div class="form-group fl">
+						<b risk:check="/ssoSystem/editCacSystem">
+							<button type="button" class="btn btn-primary" onclick="sysSubmitBtn(false)">提交</button>
+						</b>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+

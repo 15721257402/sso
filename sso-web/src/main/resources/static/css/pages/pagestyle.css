@@ -1,0 +1,39 @@
+#page {
+    vertical-align: middle;
+    border-radius: 4px;
+    padding: 1px 2px 4px 2px;
+    text-align: center;
+    margin-top: 30px;
+}
+#page a, #page i {
+    font-family: Arial, sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+    width: 26px;
+    color: #aeaeae;
+    text-align: center;
+    font-size: 21px;
+    padding: 3px 0 2px 0;
+    -webkit-user-select:none;
+       -moz-user-select:none;
+        -ms-user-select:none;
+         -o-user-select:none;
+            user-select:none;
+}
+
+#page a {
+    margin: 0 3px 0 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #e6e6e6;
+
+}
+#page i {
+    margin: 0 3px 0 3px;
+}
+#page a.current {
+	background-color: #16c1ff;
+	color: #fff;
+}
+#page a:hover{
+}
