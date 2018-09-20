@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>cac-sso</artifactId>
+		<groupId>com.tritonsfs.cac.sso</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sso-service</artifactId>
+
+	<properties>
+		<mvn.deploy.skip>true</mvn.deploy.skip>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.tritonsfs.cac.sso</groupId>
+			<artifactId>sso-interface</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.tritonsfs.cac.frame</groupId>
+			<artifactId>frame-gateway</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.tritonsfs.cac.frame</groupId>
+			<artifactId>frame-dao</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- dubbo -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+		</dependency>
+		<!-- dubbo end -->
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+
+		<!-- CAC-Util 通用工具包 -->
+		<dependency>
+			<groupId>com.tritonsfs.cac.util</groupId>
+			<artifactId>util-common</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- CAC-LOG -->
+
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+		</dependency>
+
+	</dependencies>
+	<packaging>jar</packaging>
+</project>
